@@ -14,6 +14,14 @@ jobs:
         with:
           java-version: "11"
           java-package: jdk
+      - name: cache gradle things
+        uses: actions/cache@v2
+        env:
+          cache-name: gradle-files
+        with:
+          path: ~/.gradle
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}
       - name: gradlew jar
         run: sudo bash ./gradlew jar -Dfile.encoding=UTF-8
       - name: get filename
@@ -41,6 +49,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/${{ steps.get_filename.outputs.file_name }}
+          asset_path: ./build/libs/${{ steps.get-filename.outputs.file_name }}
           asset_name: ${{ steps.get-filename.outputs.file_name }}
           asset_content_type: application/zip
