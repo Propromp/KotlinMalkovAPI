@@ -30,8 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get-version.outputs.version }}-${{ github.run_number }}
-          release_name: ${{ steps.get-version.outputs.version }} ${{ github.event.head_commit.message }}
+          tag_name: "${{ steps.get-version.outputs.version }}-${{ github.run_number }}"
+          release_name: "${{ steps.get-version.outputs.version }} ${{ github.event.head_commit.message }}"
           body: ""
           draft: false
           prerelease: false
