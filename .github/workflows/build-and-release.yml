@@ -21,7 +21,7 @@ jobs:
         with:
           path: ~/.gradle
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('build.gradle.kts') }}
-          restore-keys: ${{ runner.os }}-build-${{ env.cache-name }}-
+          restore-keys: ${{ runner.os }}-build-
       - name: gradlew jar
         run: sudo bash ./gradlew jar -Dfile.encoding=UTF-8
       - name: get filename
