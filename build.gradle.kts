@@ -15,5 +15,10 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 tasks.create("writeVersionToFile") {
-    File(project.buildDir,"versions.txt").writeText(version as String)
+    File(project.buildDir,"versions.txt").apply {
+        if(!exists()) {
+            createNewFile()
+        }
+        writeText(version as String)
+    }
 }
