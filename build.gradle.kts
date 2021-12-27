@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.5.10"
 }
 
 group = "net.propromp"
@@ -15,8 +15,5 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 tasks.create("writeVersionToFile") {
-        file("build/version.txt").apply {
-            this.createNewFile()
-            writeText(version as String)
-        }
+    File(project.buildDir,"versions.txt").writeText(version as String)
 }
