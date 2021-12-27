@@ -23,3 +23,14 @@ tasks.create("writeVersionToFile") {
         writeText(version as String)
     }
 }
+
+publishing {
+    publications {
+        create("maven_public",MavenPublication::class.java) {
+            groupId = "net.propromp"
+            artifactId = "kotlinmalkovapi"
+            version = version
+            from(components.getByName("java"))
+        }
+    }
+}
