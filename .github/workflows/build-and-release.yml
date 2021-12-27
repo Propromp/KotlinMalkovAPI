@@ -15,12 +15,12 @@ jobs:
           java-version: "11"
           java-package: jdk
       - name: gradlew jar
-        run: sudo ./gradlew jar -Dfile.encoding=UTF-8
+        run: sudo bash ./gradlew jar -Dfile.encoding=UTF-8
       - name: get filename
         id: get-filename
         run: echo ::set-output name=file_name::$(ls -1 ./build/libs/)
       - name: gradlew writeVersionToFile
-        run: sudo ./gradlew writeVersionToFile
+        run: sudo bash ./gradlew writeVersionToFile
       - name: get version
         id: get-version
         run: echo ::set-output name=version::$(cat ./build/version.txt)
