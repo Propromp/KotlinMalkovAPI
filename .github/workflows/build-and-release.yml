@@ -23,7 +23,7 @@ jobs:
         run: sudo bash ./gradlew writeVersionToFile
       - name: get version
         id: get-version
-        run: echo ::set-output name=version::$(cat ./version.txt)
+        run: echo ::set-output name=version::$(cat ./versions.txt)
       - name: create release
         id: create_release
         uses: actions/create-release@v1
