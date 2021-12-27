@@ -14,3 +14,6 @@ repositories {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
+tasks.create("writeVersionToFile") {
+        file("build/version.txt").writeText(version as String)
+}
